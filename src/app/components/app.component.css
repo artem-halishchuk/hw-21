@@ -1,0 +1,44 @@
+h1 {
+  color: red;
+}
+.headerH1 {
+  border: 2px black solid;
+  border-radius: 15px;
+}
+.testClass {
+  border: 10px black solid;
+}
+.testClassLi {
+  border: 2px white solid;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+}
+.container .leftBar {
+  width: 300px;
+  background-color: #777;
+}
+.container .content {
+  flex-grow: 1;
+  padding: 20px;
+}
+.container .content .form {
+  box-shadow: 2px 2px 2px 2px #ccc;
+  padding: 10px;
+}
+.container .content .form input, .container .content .form textarea {
+  width: 80%;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.container .content .note {
+  box-shadow: 2px 2px 2px 2px #ccc;
+  background-color: #936;
+  padding: 20px;
+  margin-top: 10px;
+}
+.container .content .text {
+  background-color: #fff;
+  padding: 10px;
+}

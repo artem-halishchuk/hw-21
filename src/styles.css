@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+body, html {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.noteList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.noteList li {
+  padding: 10px;
+  box-shadow: 1px 1px 1px 0 #000;
+}
+.noteList li.active {
+  background-color: black;
+  color: white;
+}
+
+.login, .register {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 20px;
+  width: 320px;
+  gap: 10px;
+}
+.register-form {
+  margin: 0 10px 10px 10px;
+}
+.register-form input {
+
+}
+.register, .popup {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-content, .popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

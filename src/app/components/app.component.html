@@ -1,0 +1,113 @@
+<div class="login" *ngIf = "visibleLogin">
+  <h1>My phone book</h1>
+  <div class="login-form">
+    <div class="form-group">
+      <input id="login-login" type="text" placeholder="Login" [(ngModel)]="login.login"
+             #loginAuthorization="ngModel" required pattern="^[a-zA-Z](.[a-zA-Z0-9_-]*)$">
+      <div [hidden]="(!loginAuthorization.untouched && loginAuthorization.valid) || loginAuthorization.untouched" class="alert alert-danger">
+        Login is not validated
+      </div>
+    </div>
+    <div class="form-group">
+      <input id="login-password" type="password" placeholder="Password" [(ngModel)]="login.password"
+             #passwordAuthorization="ngModel" required pattern="^(?=.*\d)(?=.*[A-Z]).{4,}$">
+      <div [hidden]="(!passwordAuthorization.untouched && passwordAuthorization.valid) || passwordAuthorization.untouched" class="alert alert-danger">
+        Password is not validated
+      </div>
+    </div>
+    <button (click)="loginUser()" [disabled]="loginAuthorization.invalid || passwordAuthorization.invalid">Sign in</button>
+    <button (click)="showRegister()">Sign up</button>
+  </div>
+</div>
+
+<div class="register" *ngIf = "visibleRegister">
+  <div class="register-content">
+    <h2>Account creation</h2>
+    <div class="register-form">
+
+      <div class="form-group">
+        <input id="register-login" type="text" placeholder="Login" [(ngModel)]="user.login"
+               #login="ngModel" required pattern="^[a-zA-Z](.[a-zA-Z0-9_-]*)$" value="user">
+        <div [hidden]="(!login.untouched && login.valid) || login.untouched" class="alert alert-danger">
+          Login is not validated
+        </div>
+      </div>
+      <div class="form-group">
+        <input id="register-password" type="password" placeholder="Password" [(ngModel)]="user.password"
+               #password="ngModel" required pattern="^(?=.*\d)(?=.*[A-Z]).{4,}$" value="1Qaz">
+        <div [hidden]="(!password.untouched && password.valid) || password.untouched" class="alert alert-danger">
+          Password is not validated
+        </div>
+      </div>
+      <div class="form-group">
+        <input id="register-born-date" type="text" placeholder="Date of Birth (YY-MM-DD)" [(ngModel)]="user.bornDate"
+               #bornDate="ngModel" required pattern="^\d\d\d\d-\d\d-\d\d$" value="2000-01-01">
+        <div [hidden]="(!bornDate.untouched && bornDate.valid) || bornDate.untouched" class="alert alert-danger">
+          Born date is not validated
+        </div>
+      </div>
+      <button [disabled]="login.invalid || password.invalid || bornDate.invalid"
+              (click)="registerUser()">Register</button>
+      <button (click)="showRegister()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="popup" *ngIf = "visiblePopup">
+  <div class="popup-content">
+    <p>{{popupMassage}}</p>
+    <button (click)="showPopup('')">Ok</button>
+  </div>
+</div>
+
+<div class="book" *ngIf = "visibleBook">
+  <div class="book-head">
+    <h3 class="book-name-login">User name - {{users[currentUser].login}}</h3>
+    <button class="book-out" (click)="signOut()">Sign out</button>
+  </div>
+  <div class="create-contact">
+    <input id="add-contact-name" type="text" placeholder="Contact name" [(ngModel)]="contact.name">
+           <!--#contactName="ngModel" required pattern="^\S*$">
+    <div [hidden]="(!contactName.untouched && contactName.valid) || contactName.untouched" class="alert alert-danger">
+      Name is not validated
+    </div>-->
+
+    <select id="create-contact-type" required [(ngModel)]="contact.type">
+      <option value="">--- Select an option ---</option>
+      <option value="phone" ng-selected="selected">phone</option>
+      <option value="email">email</option>
+    </select>
+    <div *ngIf="contact.type === ''">
+      <input id="create-contact-type-value" type="text" placeholder="select type" [(ngModel)]="contact.value" disabled>
+      <!--#contactValue="ngModel" required pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"-->
+    </div>
+    <div *ngIf="contact.type === 'phone'">
+      <input id="create-contact-type-value" type="text" placeholder="phone" [(ngModel)]="contact.value">
+             <!--#contactValue="ngModel" required pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"-->
+    </div>
+    <div *ngIf="contact.type === 'email'">
+      <input id="create-contact-type-value2" type="text" placeholder="email" [(ngModel)]="contact.value">
+             <!--#contactValue="ngModel" required pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"-->
+    </div>
+
+    <button (click)="addContact()" [disabled]="!contact.type" *ngIf="visibleButtonAddContact">Add contact</button>
+    <button (click)="save(contact.name, contact.type, contact.value, currentContactIndex)" [disabled]="!contact.type" *ngIf="visibleSaveContact">Save contact</button>
+  </div>
+
+  <div class="content">
+    <div class="leftBar">
+      <ul class="noteList">
+        <li *ngFor="let contact of users[currentUser].contacts; let i = index" (click)="aboutContact(contact, i)">
+          {{contact.name}}
+        </li>
+      </ul>
+    </div>
+    <div class="aboutContact" *ngIf="visibleCurrentContact">
+      <div *ngIf="currentContact">{{currentContact.name}}</div>
+      <div *ngIf="currentContact">{{currentContact.type}}</div>
+      <div *ngIf="currentContact">{{currentContact.value}}</div>
+      <button *ngIf="currentContact" (click)="edit(currentContact)">Edit</button>
+      <button (click)="showCurrentContact()">Close</button>
+    </div>
+  </div>
+</div>
