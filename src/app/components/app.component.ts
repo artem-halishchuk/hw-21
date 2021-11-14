@@ -18,24 +18,17 @@ export class AppComponent {
   showRegister() {
     this.visibleRegister = !this.visibleRegister;
   }
-  // styleInput = {
-  //   backgroundColor: 'white',
-  // }
 
   visiblePopup = false;
   popupMassage:string = '';
   showPopup(massage:string) {
     this.visiblePopup = !this.visiblePopup;
     this.popupMassage = massage;
-    //if (!this.visiblePopup) this.popupMassage = '';
   }
 
   public user: User = new User('', '', '', []);
   public users: User[] = [new User('user', '1Qaz', '9999-99-99', []),
                           new User('', '', '')];
-  //users.push(user2);
-
-  //users: User[].push(user: User = new User('vasi', '1Qaz', '2000-11-11', []));
 
   registerUser() {
     let search = false;
@@ -101,6 +94,7 @@ export class AppComponent {
   }
   showCurrentContact() {
     this.visibleCurrentContact = !this.visibleCurrentContact;
+    this.currentContact = null;
   }
 
   public visibleButtonAddContact = true;

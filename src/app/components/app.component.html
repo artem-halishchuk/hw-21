@@ -68,10 +68,6 @@
   <div class="create-contact">
     <div class="add-form-input">
       <input id="add-contact-name" type="text" placeholder="Contact name" [(ngModel)]="contact.name">
-      <!--#contactName="ngModel" required pattern="^\S*$">
-<div [hidden]="(!contactName.untouched && contactName.valid) || contactName.untouched" class="alert alert-danger">
- Name is not validated
-</div>-->
 
       <select id="create-contact-type" required [(ngModel)]="contact.type">
         <option value="">--- Select an option ---</option>
@@ -95,22 +91,24 @@
       <button (click)="addContact()" [disabled]="!contact.type" *ngIf="visibleButtonAddContact">Add contact</button>
       <button (click)="save(contact.name, contact.type, contact.value, currentContactIndex)" [disabled]="!contact.type" *ngIf="visibleSaveContact">Save contact</button>
     </div>
-
-
   </div>
 
   <div class="content">
     <div class="leftBar">
       <ul class="noteList">
-        <li *ngFor="let contact of users[currentUser].contacts; let i = index" (click)="aboutContact(contact, i)">
-          {{contact.name}} <button (click)="deleteContact(i); $event.stopPropagation()">Delete</button>
+        <li *ngFor="let contact of users[currentUser].contacts; let i = index" (click)="aboutContact(contact, i)"
+            [class.active]="currentContact == contact">
+          {{contact.name}} <button class='delete-contact' (click)="deleteContact(i); $event.stopPropagation()" [class.active]="currentContact == contact">Delete</button>
         </li>
       </ul>
     </div>
     <div class="aboutContact" *ngIf="visibleCurrentContact">
-      <div *ngIf="currentContact">{{currentContact.name}}</div>
-      <div *ngIf="currentContact">{{currentContact.type}}</div>
-      <div *ngIf="currentContact">{{currentContact.value}}</div>
+      <div *ngIf="currentContact">Name: {{currentContact.name}}</div>
+      <div *ngIf="currentContact">
+        {{currentContact.type}}:
+        <a *ngIf="currentContact.type==='email'?true:false" href="mailto:{{currentContact.value}}">{{currentContact.value}}</a>
+        <a *ngIf="currentContact.type==='phone'?true:false" href="tel:{{currentContact.value}}">{{currentContact.value}}</a>
+      </div>
       <button *ngIf="currentContact" (click)="edit(currentContact)">Edit</button>
       <button (click)="showCurrentContact()">Close</button>
     </div>
