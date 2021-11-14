@@ -1,6 +1,4 @@
 export class Note {
-  //public name: string;
-  //public text: string;
   constructor(
     public name:string,
     public text:string

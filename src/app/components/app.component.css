@@ -1,44 +1,182 @@
-h1 {
-  color: red;
+* {
+  box-sizing: border-box;
 }
-.headerH1 {
-  border: 2px black solid;
-  border-radius: 15px;
+html {
+  color: black;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 10px;
+  /*background-color: #f7f6f5;*/
 }
-.testClass {
-  border: 10px black solid;
+button {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: rgb(224, 224, 224);
 }
-.testClassLi {
-  border: 2px white solid;
+button:hover {
+  border: 2px solid rgb(145, 155, 158);
+  background-color: rgba(191, 197, 201, 0.82);
 }
-.container {
-  min-height: 100vh;
+input:focus, button:focus {
+  border: 2px solid rgb(145, 155, 158);
+}
+input:hover {
+  border: 2px solid rgb(88, 93, 95);
+}
+
+.login {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
-.container .leftBar {
-  width: 300px;
-  background-color: #777;
+.login h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #2024c1;
 }
-.container .content {
-  flex-grow: 1;
+.login-form {
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 50px -29px rgba(34, 60, 80, 0.58);
+  background-color: rgba(228, 231, 232, 0.11);
+}
+.login-form .form-group input {
+  width: 100%;
+  height: 34px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+}
+.btn-login {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #383838;
+  width: 70%;
+  padding: 6px;
+}
+.btn-register {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+  width: 50%;
+  padding: 2px;
+}
+/*------------------------------------------------*/
+.register-content {
+  border-radius: 10px;
+}
+.register-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2024c1;
+  margin: 10px;
+}
+.register-form {
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 50px -29px rgba(34, 60, 80, 0.58);
+  background-color: rgba(228, 231, 232, 0.11);
+}
+.register-form .form-group input {
+  width: 100%;
+  height: 34px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+}
+.register-form .btn-register {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #383838;
+  width: 70%;
+  padding: 6px;
+}
+.register-form .btn-close {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+  width: 50%;
+  padding: 2px;
+}
+/*------------------------------------------------*/
+.popup-content {
   padding: 20px;
+  border-radius: 10px;
 }
-.container .content .form {
-  box-shadow: 2px 2px 2px 2px #ccc;
-  padding: 10px;
+.popup-massage {
+  font-weight: 500;
+  font-size: 2.2rem;
+  color: #383838;
+  margin: 10px;
+  max-width: 260px;
 }
-.container .content .form input, .container .content .form textarea {
-  width: 80%;
-  border: 1px solid #ccc;
-  outline: none;
+.popup-btn {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+  width: 50%;
+  padding: 2px;
 }
-.container .content .note {
-  box-shadow: 2px 2px 2px 2px #ccc;
-  background-color: #936;
-  padding: 20px;
-  margin-top: 10px;
+/*------------------------------------------------*/
+.book {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1024px;
+  margin-top: 30px;
+  height: 100vh;
+  background-color: aliceblue;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.container .content .text {
-  background-color: #fff;
-  padding: 10px;
+
+.book-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.book-name-login {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+}
+.btn-book-out {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+  height: 30px;
+  padding: 2px;
+}
+
+.create-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.add-form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+.create-contact input, .create-contact select {
+  width: 100%;
+  height: 28px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+.add-form-btn button {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #383838;
+  padding: 2px;
+  max-width: 300px;
 }
